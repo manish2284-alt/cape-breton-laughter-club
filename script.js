@@ -1,7 +1,6 @@
 // Paste your Google Apps Script Web App URL here:
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYisNsPEmSghxn5cmeieF-JBltfrOJ33e6zUyUxiEtQCazCEK0Us-wa9OEi44RFZokIQ/exec";
 
-https://script.google.com/macros/s/AKfycby6L2uafgndPgwCC3-UYdQ8ncp7utwlfkK2eSfP8JCijQ7snccFo4LHrUDg4nGWlfU/exec
 document.getElementById("clubForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
