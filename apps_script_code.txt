@@ -1,0 +1,102 @@
+// Cape Breton Laughter Club - Google Sheets Backend
+// Step 1: Create a Google Sheet
+// Step 2: Extensions > Apps Script
+// Step 3: Paste this code
+// Step 4: Deploy > New deployment > Web app
+// Execute as: Me
+// Who has access: Anyone
+// Step 5: Copy Web App URL and paste it in script.js as GOOGLE_SCRIPT_URL
+
+const SHEET_NAME = "Members";
+
+function doPost(e) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+      sheet.appendRow([
+        "Member ID",
+        "Submitted At",
+        "Full Name",
+        "Email",
+        "Phone",
+        "City",
+        "Age Group",
+        "Reason",
+        "Preferred Time",
+        "Activities",
+        "Volunteer",
+        "Photo Consent",
+        "Acknowledgement"
+      ]);
+    }
+
+    const data = JSON.parse(e.postData.contents);
+    const nextId = generateMemberId(sheet);
+
+    sheet.appendRow([
+      nextId,
+      new Date(),
+      data.fullName || "",
+      data.email || "",
+      data.phone || "",
+      data.city || "",
+      data.age || "",
+      data.reason || "",
+      data.time || "",
+      Array.isArray(data.activities) ? data.activities.join(", ") : "",
+      data.volunteer || "",
+      data.photoConsent || "",
+      data.acknowledgement ? "Agreed" : ""
+    ]);
+
+    sendWelcomeEmail(data.email, data.fullName, nextId);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: "success",
+        memberId: nextId,
+        message: "Registration received successfully."
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: "error",
+        message: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function generateMemberId(sheet) {
+  const lastRow = sheet.getLastRow();
+  const number = Math.max(1, lastRow);
+  return "CBLC-" + String(number).padStart(4, "0");
+}
+
+function sendWelcomeEmail(email, name, memberId) {
+  if (!email) return;
+
+  const subject = "Welcome to Cape Breton Laughter Club!";
+  const body =
+`Hello ${name || "Friend"},
+
+Welcome to Cape Breton Laughter Club!
+
+Your registration has been received.
+
+Your Member ID: ${memberId}
+
+We will contact you soon with details about upcoming laughter sessions.
+
+Keep smiling!
+
+Cape Breton Laughter Club
+Cape Breton, Nova Scotia`;
+
+  MailApp.sendEmail(email, subject, body);
+}

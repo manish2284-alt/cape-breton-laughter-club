@@ -1,0 +1,31 @@
+:root{
+  --blue:#0b4f8a; --yellow:#ffd34d; --green:#21a67a; --dark:#17324d; --light:#fffaf0;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--dark)}
+.hero{
+  min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 20px;
+  background:linear-gradient(135deg,#0b4f8a,#21a67a);
+  color:white;position:relative;overflow:hidden
+}
+.hero:after{content:"😄";font-size:190px;opacity:.12;position:absolute;right:6%;top:10%}
+.badge{background:var(--yellow);color:#17324d;padding:10px 18px;border-radius:999px;font-weight:bold}
+h1{font-size:clamp(38px,7vw,72px);margin:18px 0 8px}
+.hero p{font-size:22px;margin-bottom:28px}
+.btn{background:var(--yellow);color:#17324d;text-decoration:none;border:0;border-radius:12px;padding:14px 24px;font-weight:bold;cursor:pointer;display:inline-block}
+main{max-width:1000px;margin:auto;padding:28px 18px}
+.intro,.form-section{background:white;border-radius:22px;padding:28px;margin:22px 0;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:20px}
+.cards div{background:#f3fbff;border:2px solid #d7f0ff;border-radius:16px;padding:18px;text-align:center;font-weight:bold}
+form{display:grid;gap:12px}
+label{font-weight:bold;margin-top:8px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cfd8dc;border-radius:10px;font-size:16px}
+textarea{min-height:90px}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+.checks label,.agree{font-weight:normal;background:#f8fbff;border-radius:10px;padding:10px}
+.submit{margin-top:10px;font-size:17px}
+.success{background:#e8fff5;border:1px solid #8ce3bd;padding:14px;border-radius:12px}
+.error{background:#fff0f0;border:1px solid #ffaaaa;padding:14px;border-radius:12px}
+.hidden{display:none}
+footer{text-align:center;padding:24px;background:#17324d;color:white;margin-top:30px}

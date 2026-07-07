@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cape Breton Laughter Club | Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="badge">FREE Community Sessions</div>
+    <h1>Cape Breton Laughter Club</h1>
+    <p>Laugh Together • Connect Together • Live Better</p>
+    <a href="#registration" class="btn">Register Now</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Welcome!</h2>
+      <p>
+        Join a friendly community where people of all ages come together to laugh,
+        reduce stress, build friendships, and improve well-being.
+      </p>
+      <div class="cards">
+        <div>😄 Stress Relief</div>
+        <div>🤝 New Friends</div>
+        <div>❤️ Wellness</div>
+        <div>🍁 Cape Breton Community</div>
+      </div>
+    </section>
+
+    <section id="registration" class="form-section">
+      <h2>Membership Registration</h2>
+
+      <form id="clubForm">
+        <label>Full Name *</label>
+        <input required name="fullName" type="text" />
+
+        <label>Email Address *</label>
+        <input required name="email" type="email" />
+
+        <label>Phone Number</label>
+        <input name="phone" type="tel" />
+
+        <label>City / Community *</label>
+        <select required name="city">
+          <option value="">Select one</option>
+          <option>Sydney</option><option>North Sydney</option><option>Glace Bay</option>
+          <option>New Waterford</option><option>Sydney Mines</option><option>Membertou</option>
+          <option>Dominion</option><option>Louisbourg</option><option>Reserve Mines</option>
+          <option>Mira</option><option>Other</option>
+        </select>
+
+        <label>Age Group *</label>
+        <select required name="age">
+          <option value="">Select one</option>
+          <option>Under 18</option><option>18–30</option><option>31–45</option>
+          <option>46–60</option><option>60+</option>
+        </select>
+
+        <label>Why would you like to join?</label>
+        <textarea name="reason" placeholder="Stress relief, meet people, fun, wellness..."></textarea>
+
+        <label>Preferred Time *</label>
+        <select required name="time">
+          <option value="">Select one</option>
+          <option>Morning</option><option>Afternoon</option><option>Evening</option>
+          <option>Weekend Only</option><option>No Preference</option>
+        </select>
+
+        <label>Activities You'd Enjoy</label>
+        <div class="checks">
+          <label><input type="checkbox" name="activities" value="Laughter exercises"> Laughter exercises</label>
+          <label><input type="checkbox" name="activities" value="Laughter yoga"> Laughter yoga</label>
+          <label><input type="checkbox" name="activities" value="Fun games"> Fun games</label>
+          <label><input type="checkbox" name="activities" value="Coffee meetups"> Coffee meetups</label>
+          <label><input type="checkbox" name="activities" value="Music and dance"> Music & dance</label>
+          <label><input type="checkbox" name="activities" value="Volunteer activities"> Volunteer activities</label>
+        </div>
+
+        <label>Would you like to volunteer?</label>
+        <select name="volunteer">
+          <option>Maybe</option><option>Yes</option><option>No</option>
+        </select>
+
+        <label>Photo & Video Permission *</label>
+        <select required name="photoConsent">
+          <option value="">Select one</option>
+          <option>Yes, I agree</option>
+          <option>No, I do not agree</option>
+        </select>
+
+        <label class="agree">
+          <input required type="checkbox" name="acknowledgement" />
+          I understand participation is voluntary and I agree to participate responsibly.
+        </label>
+
+        <button type="submit" class="btn submit">Submit Registration</button>
+      </form>
+
+      <p id="success" class="success hidden"></p>
+      <p id="error" class="error hidden"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Cape Breton Laughter Club | Cape Breton, Nova Scotia</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
